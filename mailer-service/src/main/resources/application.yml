@@ -1,0 +1,19 @@
+server.port: 8081
+spring:
+  mail:
+    host: smtp.ethereal.email
+    port: 587
+    username: bethany68@ethereal.email
+    password: fDcgF2SPrvQGxwDgUG
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: mailerService
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
