@@ -14,6 +14,5 @@ public final class SendVerificationEmailEvent {
 
     private @NotBlank String userName;
     private @NotBlank String email;
-    private @NotBlank String subject;
     private @NotBlank String verificationUrl;
 }

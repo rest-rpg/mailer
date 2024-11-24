@@ -1,4 +1,4 @@
-server.port: 8081
+server.port: 8083
 spring:
   mail:
     host: smtp.ethereal.email
@@ -17,3 +17,5 @@ spring:
       group-id: mailerService
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.type.mapping: event:com.rest_rpg.mailer_api.model.SendVerificationEmailEvent
