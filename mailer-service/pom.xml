@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.rest_rpg.mailer</groupId>
         <artifactId>mailer</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>mailer-service</artifactId>
@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.rest_rpg.common</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>errors</artifactId>
             <version>${rest_rpg.common.version}</version>
         </dependency>
 
