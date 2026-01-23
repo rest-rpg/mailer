@@ -2,7 +2,9 @@ name: Build & Push Mailer Docker Image
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   docker:
@@ -11,9 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Add repository host entry
+      - name: Add repository and Nexus host entry
         run: |
           echo "144.24.176.218 repository.ms-repos.com" | sudo tee -a /etc/hosts
+          echo "144.24.176.218 nexus.ms-repos.com" | sudo tee -a /etc/hosts
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
