@@ -54,6 +54,13 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<url>https://nexus.ms-repos.com/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
+
 	<repositories>
 		<repository>
 			<id>nexus</id>
