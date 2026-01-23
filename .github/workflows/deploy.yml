@@ -1,4 +1,4 @@
-name: Deploy Common Libraries
+name: Deploy Libraries
 
 on:
   push:
@@ -28,12 +28,12 @@ jobs:
           server-username: NEXUS_USERNAME
           server-password: NEXUS_PASSWORD
 
-      - name: Build & Deploy all common modules
+      - name: Build & Deploy all modules
         env:
           NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
         run: |
-          mvn clean deploy \
+          mvn clean deploy -pl mailer-api -am \
             -Dmaven.resolver.transport=wagon \
             -Dmaven.wagon.http.ssl.insecure=true \
             -Dmaven.wagon.http.ssl.allowall=true \
