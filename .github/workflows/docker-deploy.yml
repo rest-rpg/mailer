@@ -1,10 +1,13 @@
-name: Build & Push Mailer Docker Image
+name: Build & Push Docker Image
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+
+env:
+  SERVICE_NAME: mailer-service
 
 jobs:
   docker:
@@ -65,7 +68,7 @@ jobs:
 
       - name: Build JAR
         run: |
-          mvn clean package -pl mailer-service -am -DskipTests
+          mvn clean package -pl "$SERVICE_NAME" -am -DskipTests
 
       - name: Cache Maven repository
         uses: actions/cache@v4
@@ -96,9 +99,9 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            -t registry.ms-repos.com/mailer-service:${{ steps.version.outputs.version }} \
-            mailer-service
+            -t registry.ms-repos.com/"$SERVICE_NAME":${{ steps.version.outputs.version }} \
+            "$SERVICE_NAME"
 
       - name: Push Docker image
         run: |
-          docker push registry.ms-repos.com/mailer-service:${{ steps.version.outputs.version }}
+          docker push registry.ms-repos.com/"$SERVICE_NAME":${{ steps.version.outputs.version }}
